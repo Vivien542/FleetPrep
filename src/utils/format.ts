@@ -95,9 +95,15 @@ export function generateId(): string {
 }
 
 /**
- * Génère la valeur du QR code pour un véhicule
+ * URL de base de l'application — utilise la variable d'env Vite si définie,
+ * sinon l'origine courante (fonctionne en dev local et sur Vercel)
+ */
+const APP_BASE_URL = import.meta.env.VITE_APP_URL?.replace(/\/$/, '') ?? window.location.origin;
+
+/**
+ * Génère la valeur du QR code pour un véhicule.
+ * Pointe vers la fiche véhicule de l'app hébergée.
  */
 export function generateQrCodeValue(vehicleId: string): string {
-  // En production, ce serait l'URL complète de l'application
-  return `fleetprep://vehicle/${vehicleId}`;
+  return `${APP_BASE_URL}/flotte/${vehicleId}`;
 }

@@ -133,7 +133,8 @@ export function VehicleDetailPage() {
               </button>
               {showQr && (
                 <div className="mt-2 p-3 bg-white rounded-xl">
-                  <QRCode value={vehicle.qrCodeValue} size={120} />
+                  {/* URL toujours recalculée dynamiquement selon l'hébergement */}
+                  <QRCode value={`${window.location.origin}/flotte/${vehicle.id}`} size={120} />
                 </div>
               )}
             </div>
